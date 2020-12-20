@@ -769,38 +769,4 @@ struct QBindingStatus
     QtPrivate::CurrentCompatProperty* currentCompatProperty = nullptr;
 };
 
-struct QBindingStorageData;
-class QPROPERTY_BINDING_EXPORT QBindingStorage
-{
-    mutable QBindingStorageData* d = nullptr;
-    QBindingStatus* bindingStatus = nullptr;
-
-   public:
-    QBindingStorage();
-    ~QBindingStorage();
-
-    bool isEmpty() { return !d; }
-
-    void maybeUpdateBindingAndRegister(const QUntypedPropertyData* data) const
-    {
-        if (!d && !bindingStatus->currentlyEvaluatingBinding) return;
-        maybeUpdateBindingAndRegister_helper(data);
-    }
-    QtPrivate::QPropertyBindingData* bindingData(const QUntypedPropertyData* data) const
-    {
-        if (!d) return nullptr;
-        return bindingData_helper(data);
-    }
-    QtPrivate::QPropertyBindingData* bindingData(QUntypedPropertyData* data, bool create)
-    {
-        if (!d && !create) return nullptr;
-        return bindingData_helper(data, create);
-    }
-
-   private:
-    void maybeUpdateBindingAndRegister_helper(const QUntypedPropertyData* data) const;
-    QtPrivate::QPropertyBindingData* bindingData_helper(const QUntypedPropertyData* data) const;
-    QtPrivate::QPropertyBindingData* bindingData_helper(QUntypedPropertyData* data, bool create);
-};
-
 #endif  // QPROPERTY_H
