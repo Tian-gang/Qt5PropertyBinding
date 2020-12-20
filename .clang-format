@@ -1,0 +1,27 @@
+
+--- 
+BasedOnStyle: Google
+IndentWidth: 4
+Language: Cpp
+DerivePointerAlignment: false
+PointerAlignment: Left
+ColumnLimit: 130   
+UseTab: Never
+
+AlignTrailingComments: true
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortLoopsOnASingleLine: false
+BinPackParameters: true
+MaxEmptyLinesToKeep: 1
+NamespaceIndentation: None
+SpacesBeforeTrailingComments: 2
+SpacesInAngles: false
+
+BreakBeforeBinaryOperators: All
+BreakBeforeBraces: Allman
+BreakBeforeTernaryOperators: true
+BreakConstructorInitializers: BeforeColon
+Cpp11BracedListStyle: true 
+BreakStringLiterals: true
+... 
